@@ -734,7 +734,8 @@ def get_file_names(directoryPath):
         return None
 
 def command_line_syntax(programName):
-    return "{} [ [-h|--help] | <directory name> ]".format(programName)
+    return "{} [ [-h|--help] | <directory name> ]".format(
+        os.path.basename(programName))
 
 def report_command_line_error(msg):
     """
