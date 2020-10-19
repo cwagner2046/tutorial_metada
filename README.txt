@@ -1,7 +1,8 @@
 1.  INTRODUCTION
 
    NOTE: This program is provided as-is. No support is provided, no maintenance
-   is granted.
+   is granted. If this program were to inspire you, fork it and be kind enough
+   to reference the source of your inspiration.
 
 
 The program 'tutorial_metadata' extracts tutorial metadata from _text_ files
@@ -11,14 +12,17 @@ associated keywords.
 
 Note that 'tutorial_metada' is written in Python2.
 
+This program has been written and tested on Mac OSX 10.10 ("Yosemite").
+
 Due to the implementation of one of its functions, the program can run only on
 Linux/Unix operating systems.
 
 
-  1.2 Installation
+    1.2 Installation
 
 Copy 'tutorial_metadata' in a directory listed in your PATH environment
 variable.
+
 
 
 2. DESCRIPTION
@@ -47,6 +51,41 @@ on stdout, looking like:
   Tutorial: my tutorial's description
   KWords: kw1, kw2, kw3
 
-See the online help for more information. As it stands, the program can handle
-shell script comments, Java comments, C comments, Lua comments (single-line
-comments), Haskell comments, simple OCaml comments.
+See the online help (tutorial_metadata -h) for more information. As it stands,
+the program can handle shell script comments, Java comments, C comments, Lua
+comments (single-line comments), Haskell comments, simple OCaml comments.
+
+
+    2.1 Example
+
+Assuming we are at the root of the file tree containing the following files:
+
+   README.txt:
+      # Tutorial #1: Tutorial example
+      # KWords: example
+
+   install.sh:
+      #!/usr/bin/env bash
+      ## tutorial #1: tutorial example, installation script
+      ## KWorks: installation
+
+   dir1/source2.ext2:
+      ... some content but no comments, // being the comment mark ...
+      // Tutorial #2
+      // KWords: x, y
+
+   dir1/source3.ext2:
+      // Tutorial #1: Tutorial example using language X
+      // KWords: language X
+
+   dir1/dir2/source3.ext:
+      ## tutorial #1: Tutorial example showing ...
+      ## kwords: library
+
+(where the start of the content of the files is given after their names),
+
+then:
+
+   $ tutorial_metadata .
+   Tutorial #1: Tutorial example
+   Keywords: example, installation, language X, library
