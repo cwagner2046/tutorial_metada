@@ -768,9 +768,11 @@ In case the "Tutorial" line is not always the same, the smallest version, i.e.,
 the most generic version, is retained as long as it is included in all longer
 versions.
 
-All the versions have to fully include the smaller versions, otherwise the
-program considers them part of different tutorial metadata, raises an error and
-aborts. The program considers that the file tree can contain only one tutorial.
+All "Tutorial" lines in the files making the tutorial have to contain the
+smallest version of such line, i.e, this smallest version has to be the prefix
+of all these "Tutorial" lines. Otherwise the program considers these lines as
+being part of different tutorial metadata, raises an error and aborts. In other
+words, the file tree can contain only one tutorial.
 
 If a file contains keywords but no "Tutorial" line, a warning is displayed and
 the file is skipped.
